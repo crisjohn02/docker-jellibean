@@ -72,6 +72,6 @@ RUN groupmod -g ${HOST_UID} www-data
 RUN chmod -R 755 $WORKDIR
 RUN chown -R www-data:www-data $WORKDIR
 
-EXPOSE 9000
+EXPOSE 9001
 
 ENTRYPOINT [ "/usr/local/bin/entrypoint.sh" ]
