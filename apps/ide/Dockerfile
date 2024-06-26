@@ -50,15 +50,6 @@ WORKDIR $WORKDIR
 
 ADD php.ini $PHP_INI_DIR/conf.d/
 
-COPY src/ .
-
-RUN composer install --optimize-autoloader --no-dev
-RUN php artisan config:cache
-RUN php artisan event:cache
-RUN php artisan route:cache
-RUN php artisan view:cache
-RUN php artisan optimize
-
 COPY php_pool.conf /usr/local/etc/php-fpm.d/zz-docker.conf
 
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh

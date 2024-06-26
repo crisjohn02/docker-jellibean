@@ -4,10 +4,22 @@ services:
       context: ./apps/ide
       dockerfile: Dockerfile
     restart: unless-stopped
-    ports:
-      - "9001:9001"
+    container_name: php82-1
     networks:
       - jb-network
+    volumes:
+      - ./apps/ide/src:/var/www/ide.jellibean.app
+
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    ports:
+      - "9001:80"
+    networks:
+      - jb-network
+    volumes:
+      - ./apps/ide/src:/var/www/ide.jellibean.app
 
 networks:
   jb-network:
