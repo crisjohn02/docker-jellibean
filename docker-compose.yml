@@ -9,6 +9,8 @@ services:
       - jb-network
     volumes:
       - ./apps/ide/src:/var/www/ide.jellibean.app
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
   nginx:
     build:
@@ -20,6 +22,8 @@ services:
       - jb-network
     volumes:
       - ./apps/ide/src:/var/www/ide.jellibean.app
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
 networks:
   jb-network:
